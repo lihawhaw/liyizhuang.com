@@ -8,6 +8,9 @@ module.exports = {
         post: 'repeat(2, minmax(0, 1fr));',
         img3: 'repeat(3, minmax(0, 1fr));',
       },
+      fontFamily: {
+        ynr: 'Yunmobei-enlogo-Regular',
+      },
     },
     container: {
       center: true,

@@ -26,7 +26,7 @@ export default defineConfig({
       changefreq: EnumChangefreq.WEEKLY,
       priority: 1,
       serialize(item) {
-        if (/tools/.test(item.url)) {
+        if (/tool/.test(item.url)) {
           return undefined
         }
         if (/work/.test(item.url)) {
