@@ -5,6 +5,7 @@ import mdx from '@astrojs/mdx'
 import sitemap from '@astrojs/sitemap'
 import { EnumChangefreq } from 'sitemap'
 import react from '@astrojs/react'
+import starlight from '@astrojs/starlight'
 const lastmod = new Date().toString()
 
 // https://astro.build/config
@@ -39,9 +40,42 @@ export default defineConfig({
           item.lastmod = lastmod
           item.priority = 0.8
         }
+        if (/article/.test(item.url)) {
+          item.changefreq = EnumChangefreq.DAILY
+          item.lastmod = lastmod
+          item.priority = 0.8
+        }
+        if (/front-end/.test(item.url)) {
+          item.changefreq = EnumChangefreq.DAILY
+          item.lastmod = lastmod
+          item.priority = 0.8
+        }
+        if (/ops/.test(item.url)) {
+          item.changefreq = EnumChangefreq.DAILY
+          item.lastmod = lastmod
+          item.priority = 0.8
+        }
         return item
       },
     }),
     react(),
+    starlight({
+      title: '前端技术记录',
+      defaultLocale: 'zh-CN',
+      sidebar: [
+        {
+          label: '文章',
+          autogenerate: { directory: 'article' },
+        },
+        {
+          label: '前端',
+          autogenerate: { directory: 'front-end' },
+        },
+        {
+          label: '运维',
+          autogenerate: { directory: 'ops' },
+        },
+      ],
+    }),
   ],
 })
