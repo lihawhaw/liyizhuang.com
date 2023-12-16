@@ -4,7 +4,7 @@ import Header from '../components/base/Header.astro'
 import { siteTitle } from '../config'
 ---
 
-<!DOCTYPE html>
+<!doctype html>
 <html lang='zh' class='dark'>
   <head>
     <meta charset='UTF-8' />
@@ -49,8 +49,8 @@ import { siteTitle } from '../config'
         hostname === 'localhost'
           ? Aegis.environment.local
           : hostname === 'liyizhuang.com'
-          ? Aegis.environment.production
-          : Aegis.environment.others
+            ? Aegis.environment.production
+            : Aegis.environment.others
       const aegis = new Aegis({
         id: 'dWVxJTvjww9eOEq34G',
         reportApiSpeed: true,

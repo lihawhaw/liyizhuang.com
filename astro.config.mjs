@@ -6,6 +6,8 @@ import sitemap from '@astrojs/sitemap'
 import { EnumChangefreq } from 'sitemap'
 import react from '@astrojs/react'
 import starlight from '@astrojs/starlight'
+import astroExpressiveCode from 'astro-expressive-code'
+
 const lastmod = new Date().toString()
 
 // https://astro.build/config
@@ -21,8 +23,27 @@ export default defineConfig({
   },
   integrations: [
     tailwind(),
-    prefetch(),
+    astroExpressiveCode(),
     mdx(),
+    react(),
+    starlight({
+      title: '前端技术记录',
+      defaultLocale: 'zh-CN',
+      sidebar: [
+        {
+          label: '文章',
+          autogenerate: { directory: 'article' },
+        },
+        {
+          label: '前端',
+          autogenerate: { directory: 'front-end' },
+        },
+        {
+          label: '运维',
+          autogenerate: { directory: 'ops' },
+        },
+      ],
+    }),
     sitemap({
       changefreq: EnumChangefreq.WEEKLY,
       priority: 1,
@@ -58,24 +79,6 @@ export default defineConfig({
         return item
       },
     }),
-    react(),
-    starlight({
-      title: '前端技术记录',
-      defaultLocale: 'zh-CN',
-      sidebar: [
-        {
-          label: '文章',
-          autogenerate: { directory: 'article' },
-        },
-        {
-          label: '前端',
-          autogenerate: { directory: 'front-end' },
-        },
-        {
-          label: '运维',
-          autogenerate: { directory: 'ops' },
-        },
-      ],
-    }),
+    prefetch(),
   ],
 })

@@ -13,7 +13,7 @@ let isActive = href === pathname || href === pathname.replace(/\/$/, '')
 <a
   class='inline-block'
   href={href}
-  class:list={[className, { 'font-semibold scale-125': isActive }]}
+  class:list={[className, { 'scale-125 font-semibold': isActive }]}
   {...props}
 >
   <slot />

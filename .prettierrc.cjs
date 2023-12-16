@@ -1,11 +1,8 @@
 /**
- * @type {import('prettier').Options}
+ * @type {import('prettier').Config}
  */
 module.exports = {
-  plugins: [
-    require.resolve('prettier-plugin-astro'),
-    require('prettier-plugin-tailwindcss'),
-  ],
+  plugins: ['prettier-plugin-astro', 'prettier-plugin-tailwindcss'],
   overrides: [
     {
       files: '*.astro',
@@ -23,5 +20,4 @@ module.exports = {
   semi: false,
   useTabs: false,
   arrowParens: 'avoid',
-  pluginSearchDirs: false,
 }

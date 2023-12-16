@@ -8,30 +8,31 @@
     "build": "astro build",
     "preview": "astro preview",
     "astro": "astro",
-    "format": "prettier -w --plugin-search-dir=. ."
+    "format": "prettier -w ."
   },
   "dependencies": {
-    "@astrojs/starlight": "^0.12.1",
-    "astro": "^3.5.5",
-    "cos-js-sdk-v5": "^1.4.16",
+    "@astrojs/starlight": "^0.15.0",
+    "astro": "^4.0.6",
+    "cos-js-sdk-v5": "^1.4.22",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
   },
   "devDependencies": {
-    "@astrojs/check": "^0.3.1",
-    "@astrojs/mdx": "^1.1.5",
-    "@astrojs/prefetch": "^0.2.1",
-    "@astrojs/react": "^3.0.5",
-    "@astrojs/rss": "^3.0.0",
-    "@astrojs/sitemap": "^1.2.2",
-    "@astrojs/tailwind": "^5.0.2",
-    "@types/react": "^18.2.0",
-    "@types/react-dom": "^18.2.1",
-    "prettier": "^2.8.8",
-    "prettier-plugin-astro": "^0.8.0",
-    "prettier-plugin-tailwindcss": "^0.2.7",
+    "@astrojs/check": "^0.3.3",
+    "@astrojs/mdx": "^2.0.1",
+    "@astrojs/prefetch": "^0.4.1",
+    "@astrojs/react": "^3.0.7",
+    "@astrojs/rss": "^4.0.1",
+    "@astrojs/sitemap": "^3.0.3",
+    "@astrojs/tailwind": "^5.0.3",
+    "@types/react": "^18.2.45",
+    "@types/react-dom": "^18.2.18",
+    "astro-expressive-code": "^0.30.1",
+    "prettier": "^3.1.1",
+    "prettier-plugin-astro": "^0.12.2",
+    "prettier-plugin-tailwindcss": "^0.5.9",
     "sitemap": "^7.1.1",
-    "tailwindcss": "^3.3.2",
-    "typescript": "^5.2.2"
+    "tailwindcss": "^3.3.6",
+    "typescript": "^5.3.3"
   }
 }

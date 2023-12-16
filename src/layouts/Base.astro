@@ -3,7 +3,7 @@ import { siteTitle } from '../config'
 import '../styles/global.css'
 ---
 
-<!DOCTYPE html>
+<!doctype html>
 <html lang='zh' class='h-full'>
   <head>
     <meta charset='UTF-8' />
@@ -36,8 +36,8 @@ import '../styles/global.css'
         hostname === 'localhost'
           ? Aegis.environment.local
           : hostname === 'liyizhuang.com'
-          ? Aegis.environment.production
-          : Aegis.environment.others
+            ? Aegis.environment.production
+            : Aegis.environment.others
       const aegis = new Aegis({
         id: 'dWVxJTvjww9eOEq34G',
         reportApiSpeed: true,

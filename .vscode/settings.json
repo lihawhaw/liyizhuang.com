@@ -1,8 +1,5 @@
 {
   "prettier.documentSelectors": ["**/*.astro"],
-  "[astro]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
   "editor.tabSize": 2,
   "editor.formatOnSave": true,
   "editor.codeActionsOnSave": ["source.fixAll", "source.fixAll.stylelint"],
@@ -26,6 +23,9 @@
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
   "[jsonc]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[astro]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   }
 }
