@@ -1,0 +1,48 @@
+---
+title: git同时配置github gitee多个密钥
+---
+
+## 第一步 生成ssh密钥
+
+```shell
+# GitHub
+ssh-keygen -t ed25519 -C "i@lihaha.cn" -f ~/.ssh/github.ssh
+# 码云
+ssh-keygen -t ed25519 -C "i@lihaha.cn" -f ~/.ssh/gitee.ssh
+```
+
+## 第二步 给对应网站添加公钥
+
+```shell
+# 比如 GitHub
+https://github.com/settings/ssh/new
+```
+
+## 第三步 创建配置文件
+
+```shell
+# 1. 创建一个 config 文件
+～\.ssh\config
+
+# 2. 添加配置
+# gitee
+Host gitee.com
+HostName gitee.com
+PreferredAuthentications publickey
+IdentityFile ~/.ssh/gitee.ssh
+
+# github
+Host github.com
+HostName github.com
+PreferredAuthentications publickey
+IdentityFile ~/.ssh/github.ssh
+```
+
+## 第四部 检测
+
+```shell
+# 当出现用户名的时候代表成功
+# GitHub
+ssh -T git@github.com
+
+```
