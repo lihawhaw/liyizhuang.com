@@ -1,7 +1,12 @@
 ---
 import BaseWork from '../../layouts/BaseWork.astro'
+import Link from '../../components/base/Link.astro'
 ---
 
 <BaseWork>
-  <div>作品内容还在建设中，过段时间再来看吧..</div>
+  <Link href="/work/urlencode" target="_blank">
+    <button className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600">UrlEncode</button>
+  </Link>
+
+  <div>其他作品内容还在建设中，过段时间再来看吧..</div>
 </BaseWork>
