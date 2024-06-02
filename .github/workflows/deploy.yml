@@ -51,5 +51,5 @@ jobs:
           secretKey: ${{ secrets.TENCENT_CLOUD_SECRET_KEY }}
           bucket: ${{ secrets.COS_BUCKET }}
           region: ${{ secrets.COS_REGION }}
-          localPath: dist
-          remotePath: /
+          localPath: 'dist'
+          remotePath: '/'
