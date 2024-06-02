@@ -55,5 +55,5 @@ jobs:
           localPath: dist
           remotePath: /
           uploadSuffix: |
-                    '*'
-                    'html'
+                    *
+                    html
