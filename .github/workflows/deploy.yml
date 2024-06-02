@@ -53,4 +53,3 @@ jobs:
           region: ${{ secrets.COS_REGION }}
           localPath: dist
           remotePath: /
-          uploadSuffix: '*,html'
