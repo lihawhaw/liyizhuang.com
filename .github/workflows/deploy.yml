@@ -45,7 +45,7 @@ jobs:
         run: pnpm build
 
       - name: deploy
-        uses: lihawhaw/uos-action@v0.7.0
+        uses: lihawhaw/uos-action@v0.8.0
         with:
           cloudType: 'cos'
           secretId: ${{ secrets.TENCENT_CLOUD_SECRET_ID }}
