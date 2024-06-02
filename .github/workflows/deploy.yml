@@ -57,3 +57,7 @@ jobs:
           uploadSuffix: |
                     *
                     html
+          cdnRefresh: true
+          cdnDomain: https://liyizhuang.com
+          cdnRefreshSuffix: html
+          
