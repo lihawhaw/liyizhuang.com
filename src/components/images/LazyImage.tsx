@@ -145,11 +145,7 @@ const LazyImage: React.FC<LazyImageProps> = ({ src, alt }) => {
 
   return (
     <div ref={ref}>
-      {!isVisible && (
-        <span className='h-full w-full text-center align-baseline'>
-          加载中...
-        </span>
-      )}
+      {!isVisible && <span className='h-full w-full text-center align-baseline'>加载中...</span>}
       <img
         className='h-full w-full'
         src={isVisible ? src : ''}

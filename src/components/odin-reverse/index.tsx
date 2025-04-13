@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React, { useState } from 'react'
 import Message from '../message'
 
 const OdinReverse: React.FC = () => {
@@ -15,13 +15,15 @@ const OdinReverse: React.FC = () => {
     setOutput(encoded)
   }
 
-
   const copyToClipboard = (text: string) => {
-    navigator.clipboard.writeText(text).then(() => {
-      setMessage('Copied to clipboard!')
-    }).catch(err => {
-      console.error('Failed to copy: ', err)
-    })
+    navigator.clipboard
+      .writeText(text)
+      .then(() => {
+        setMessage('Copied to clipboard!')
+      })
+      .catch(err => {
+        console.error('Failed to copy: ', err)
+      })
   }
 
   const handleReverseAndCopy = () => {
@@ -31,29 +33,30 @@ const OdinReverse: React.FC = () => {
   }
 
   return (
-    <div className="flex flex-col items-center mt-12 w-full max-w-4xl mx-auto">
+    <div className='mx-auto mt-12 flex w-full max-w-4xl flex-col items-center'>
       <textarea
         rows={3}
-        className="w-full mb-5 p-2 border rounded bg-gray-800 text-white"
+        className='mb-5 w-full rounded border bg-gray-800 p-2 text-white'
         value={input}
-        onChange={(e) => setInput(e.target.value)}
-        style={{resize: 'none'}}
+        onChange={e => setInput(e.target.value)}
+        style={{ resize: 'none' }}
       />
-      <div className="flex space-x-4 mb-5">
-        <button className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600" onClick={handleReverseNode}>Reverse
+      <div className='mb-5 flex space-x-4'>
+        <button className='rounded bg-blue-500 px-4 py-2 text-white hover:bg-blue-600' onClick={handleReverseNode}>
+          Reverse
         </button>
-        <button className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600" onClick={handleReverseAndCopy}>Reverse
-          & Copy
+        <button className='rounded bg-blue-500 px-4 py-2 text-white hover:bg-blue-600' onClick={handleReverseAndCopy}>
+          Reverse & Copy
         </button>
       </div>
       <textarea
         rows={3}
-        className="w-full p-2 border rounded bg-gray-800 text-white"
+        className='w-full rounded border bg-gray-800 p-2 text-white'
         value={output}
         readOnly
-        style={{resize: 'none'}}
+        style={{ resize: 'none' }}
       />
-      {message && <Message message={message} onClose={() => setMessage('')}/>}
+      {message && <Message message={message} onClose={() => setMessage('')} />}
     </div>
   )
 }

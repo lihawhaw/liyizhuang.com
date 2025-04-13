@@ -3,7 +3,7 @@ export const beianGN = {
   text: '浙公网安备 33011002015568 号',
   href: 'http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=33011002015568',
 }
-export const beianICP = '豫ICP备 20003355号-1'
+export const beianICP = '豫ICP备20003355号-1'
 
 export const routers = [
   {
@@ -20,7 +20,7 @@ export const routers = [
   },
   {
     title: '工具',
-    href: '/tools',
+    href: '/tool',
   },
 ]
 

@@ -7,7 +7,7 @@ const posts = await Astro.glob('./*.mdx')
 <Base>
   <article class='mt-16'>
     <div class='mb-8 text-xl'>文章列表</div>
-    <section class='grid gap-12 md:grid-cols-post'>
+    <section class='md:grid-cols-post grid gap-12'>
       {
         posts.map(post => {
           const cover = post.frontmatter.cover
@@ -18,9 +18,7 @@ const posts = await Astro.glob('./*.mdx')
                   <img class='h-full w-full' src={cover} />
                 </div>
                 <h1 class='mt-6 break-words'>{post.frontmatter.title}</h1>
-                <p class='mt-2 break-words text-[#718096]'>
-                  {post.frontmatter.description}
-                </p>
+                <p class='mt-2 break-words text-[#718096]'>{post.frontmatter.description}</p>
               </div>
             </Link>
           )

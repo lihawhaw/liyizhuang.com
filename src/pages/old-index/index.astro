@@ -6,15 +6,8 @@ const posts = await Astro.glob('../post/*.mdx')
 
 <Base>
   <div class='mt-20 flex flex-col items-center gap-9'>
-    <div
-      class='h-48 w-48 overflow-hidden rounded-full bg-gradient-to-r from-violet-500 to-fuchsia-500 p-1'
-    >
-      <img
-        src='https://static.lihaha.cn/avatar/smiley.svg class='
-        h-full
-        w-full'
-        alt='avatar'
-      />
+    <div class='h-48 w-48 overflow-hidden rounded-full bg-gradient-to-r from-violet-500 to-fuchsia-500 p-1'>
+      <img src='https://static.lihaha.cn/avatar/smiley.svg class=' h-full w-full' alt='avatar' />
     </div>
     <h2 class='text-3xl'>
       Hello, I'm <span class='text-cyan-400'>Li Yizhuang</span>.
@@ -26,7 +19,7 @@ const posts = await Astro.glob('../post/*.mdx')
 
   <article class='mt-16'>
     <div class='mb-8 text-xl'>文章列表</div>
-    <section class='grid gap-12 md:grid-cols-post'>
+    <section class='md:grid-cols-post grid gap-12'>
       {
         posts.map(post => {
           const cover = post.frontmatter.cover
@@ -37,9 +30,7 @@ const posts = await Astro.glob('../post/*.mdx')
                   <img class='h-full w-full' src={cover} />
                 </div>
                 <h1 class='mt-6 break-words'>{post.frontmatter.title}</h1>
-                <p class='mt-2 break-words text-[#718096]'>
-                  {post.frontmatter.description}
-                </p>
+                <p class='mt-2 break-words text-[#718096]'>{post.frontmatter.description}</p>
               </div>
             </Link>
           )

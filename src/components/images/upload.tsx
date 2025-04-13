@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useRef, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import COS from 'cos-js-sdk-v5'
 import LazyImage from './LazyImage'
 
@@ -8,11 +8,15 @@ const UploadImage = () => {
   const [previewImage, setpreviewImage] = useState<string | null>()
   const [progress, setProgress] = useState(0)
 
-  const cosRef = useRef<COS>()
+  const cosRef = useRef<COS>(undefined)
 
   useEffect(() => {
     if (!images?.length) {
-      setImages(JSON.parse(localStorage.getItem('local-images') || '[]'))
+      const localImages = localStorage.getItem('local-images')
+      const images = localImages ? JSON.parse(localImages) : []
+      if (images?.length) {
+        setImages(images)
+      }
     }
   }, [images])
 
@@ -31,9 +35,7 @@ const UploadImage = () => {
           .then(data => {
             const credentials = data.credentials
             if (!data || !credentials) {
-              console.error(
-                'credentials invalid:\n' + JSON.stringify(data, null, 2),
-              )
+              console.error('credentials invalid:\n' + JSON.stringify(data, null, 2))
               return
             }
             callback({
@@ -121,7 +123,7 @@ const UploadImage = () => {
             <img className='m-1 h-full w-full rounded-lg' src={previewImage} />
           ) : (
             <>
-              <div className='flex flex-col items-center justify-center pb-6 pt-5'>
+              <div className='flex flex-col items-center justify-center pt-5 pb-6'>
                 <svg
                   aria-hidden='true'
                   className='mb-3 h-10 w-10 text-gray-400'
@@ -140,27 +142,16 @@ const UploadImage = () => {
                 <p className='mb-2 text-sm text-gray-500 dark:text-gray-400'>
                   <span className='font-semibold'>Click to upload</span>
                 </p>
-                <p className='text-xs text-gray-500 dark:text-gray-400'>
-                  accept=image/*
-                </p>
+                <p className='text-xs text-gray-500 dark:text-gray-400'>accept=image/*</p>
               </div>
-              <input
-                id='dropzone-file'
-                type='file'
-                className='hidden'
-                onChange={handleInputChange}
-                accept='image/*'
-              />
+              <input id='dropzone-file' type='file' className='hidden' onChange={handleInputChange} accept='image/*' />
             </>
           )}
         </label>
       </div>
       <br />
       <div className='h-2.5 w-full rounded-full bg-gray-200 dark:bg-gray-700'>
-        <div
-          className='h-2.5 rounded-full bg-blue-600'
-          style={{ width: `${progress}%` }}
-        ></div>
+        <div className='h-2.5 rounded-full bg-blue-600' style={{ width: `${progress}%` }}></div>
       </div>
       <br />
       <button
@@ -171,11 +162,11 @@ const UploadImage = () => {
         Upload
       </button>
 
-      <div className='mt-6 grid flex-wrap gap-4 sm:grid-cols-post md:grid-cols-img3'>
+      <div className='sm:grid-cols-post md:grid-cols-img3 mt-6 grid flex-wrap gap-4'>
         {images.map(url => {
           return (
             <a key={url} href={url} target='_blank'>
-              <div className='break-all px-1 text-xs'>{url}</div>
+              <div className='px-1 text-xs break-all'>{url}</div>
               <div className='h-32 w-full overflow-hidden'>
                 {/* <img className='h-full w-full' src={url} /> */}
                 <LazyImage src={url} alt='' />

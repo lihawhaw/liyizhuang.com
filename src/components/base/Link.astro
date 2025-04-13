@@ -10,11 +10,6 @@ pathname = pathname === '/' ? '' : pathname
 let isActive = href === pathname || href === pathname.replace(/\/$/, '')
 ---
 
-<a
-  class='inline-block'
-  href={href}
-  class:list={[className, { 'scale-125 font-semibold': isActive }]}
-  {...props}
->
+<a class='inline-block' href={href} class:list={[className, { 'scale-125 font-semibold': isActive }]} {...props}>
   <slot />
 </a>

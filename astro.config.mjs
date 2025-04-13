@@ -1,5 +1,4 @@
 import { defineConfig } from 'astro/config'
-import tailwind from '@astrojs/tailwind'
 import prefetch from '@astrojs/prefetch'
 import mdx from '@astrojs/mdx'
 import sitemap from '@astrojs/sitemap'
@@ -7,6 +6,7 @@ import { EnumChangefreq } from 'sitemap'
 import react from '@astrojs/react'
 import starlight from '@astrojs/starlight'
 import astroExpressiveCode from 'astro-expressive-code'
+import tailwindcss from '@tailwindcss/vite'
 
 const lastmod = new Date().toString()
 
@@ -22,7 +22,6 @@ export default defineConfig({
     host: true,
   },
   integrations: [
-    tailwind(),
     astroExpressiveCode(),
     mdx(),
     react(),
@@ -81,4 +80,7 @@ export default defineConfig({
     }),
     prefetch(),
   ],
+  vite: {
+    plugins: [tailwindcss()],
+  },
 })

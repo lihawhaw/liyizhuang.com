@@ -2,6 +2,7 @@
 import Footer from '../components/base/Footer.astro'
 import Header from '../components/base/Header.astro'
 import { siteTitle } from '../config'
+import '../styles/global.css'
 ---
 
 <!doctype html>
@@ -15,10 +16,7 @@ import { siteTitle } from '../config'
     <title>{siteTitle}</title>
     <script is:inline>
       const theme = (() => {
-        if (
-          typeof localStorage !== 'undefined' &&
-          localStorage.getItem('theme')
-        ) {
+        if (typeof localStorage !== 'undefined' && localStorage.getItem('theme')) {
           return localStorage.getItem('theme')
         }
         if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
@@ -36,13 +34,12 @@ import { siteTitle } from '../config'
     </script>
   </head>
   <body class='bg-slate-900 text-gray-100'>
-    <div class='me-auto ms-auto min-h-screen pb-8 pe-4 ps-4'>
+    <div class='ms-auto me-auto min-h-screen ps-4 pe-4 pb-8'>
       <Header />
       <main class='container max-w-screen-md'><slot /></main>
       <Footer />
     </div>
-    <script is:inline src='https://tam.cdn-go.cn/aegis-sdk/latest/aegis.min.js'
-    ></script>
+    <script is:inline src='https://tam.cdn-go.cn/aegis-sdk/latest/aegis.min.js'></script>
     <script is:inline>
       const hostname = window.location.hostname
       const env =
