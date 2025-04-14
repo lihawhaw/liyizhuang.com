@@ -10,7 +10,7 @@ import Link from './Link.astro'
       footerNav.map(({ items }) => {
         return (
           <ul>
-            {items.map(({ ...item }, index) => {
+            {items.map(({ ...item }, index: number) => {
               return (
                 <li class:list={[{ 'mt-4': index }]}>
                   <Link href={item.href}>{item.title}</Link>

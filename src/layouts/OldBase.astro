@@ -3,6 +3,7 @@ import Footer from '../components/base/Footer.astro'
 import Header from '../components/base/Header.astro'
 import { siteTitle } from '../config'
 import '../styles/global.css'
+import { ClientRouter } from 'astro:transitions'
 ---
 
 <!doctype html>
@@ -14,6 +15,7 @@ import '../styles/global.css'
     <link rel='icon' type='image/svg+xml' href='/favicon.svg' />
     <meta name='generator' content={Astro.generator} />
     <title>{siteTitle}</title>
+    <ClientRouter />
     <script is:inline>
       const theme = (() => {
         if (typeof localStorage !== 'undefined' && localStorage.getItem('theme')) {
@@ -48,7 +50,7 @@ import '../styles/global.css'
           : hostname === 'liyizhuang.com'
             ? Aegis.environment.production
             : Aegis.environment.others
-      const aegis = new Aegis({
+      new Aegis({
         id: 'dWVxJTvjww9eOEq34G',
         reportApiSpeed: true,
         reportAssetSpeed: true,

@@ -1,11 +1,9 @@
 import { defineConfig } from 'astro/config'
-import prefetch from '@astrojs/prefetch'
 import mdx from '@astrojs/mdx'
 import sitemap from '@astrojs/sitemap'
 import { EnumChangefreq } from 'sitemap'
 import react from '@astrojs/react'
 import starlight from '@astrojs/starlight'
-import astroExpressiveCode from 'astro-expressive-code'
 import tailwindcss from '@tailwindcss/vite'
 
 const lastmod = new Date().toString()
@@ -22,8 +20,6 @@ export default defineConfig({
     host: true,
   },
   integrations: [
-    astroExpressiveCode(),
-    mdx(),
     react(),
     starlight({
       title: '前端技术记录',
@@ -43,6 +39,7 @@ export default defineConfig({
         },
       ],
     }),
+    mdx(),
     sitemap({
       changefreq: EnumChangefreq.WEEKLY,
       priority: 1,
@@ -78,9 +75,19 @@ export default defineConfig({
         return item
       },
     }),
-    prefetch(),
   ],
   vite: {
     plugins: [tailwindcss()],
+  },
+  prefetch: {
+    defaultStrategy: 'viewport',
+  },
+  markdown: {
+    shikiConfig: {
+      themes: {
+        light: 'min-light',
+        dark: 'aurora-x',
+      },
+    },
   },
 })

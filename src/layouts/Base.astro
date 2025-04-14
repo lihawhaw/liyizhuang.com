@@ -1,6 +1,7 @@
 ---
 import { siteTitle } from '../config'
 import '../styles/global.css'
+import { ClientRouter } from 'astro:transitions'
 ---
 
 <!doctype html>
@@ -18,6 +19,7 @@ import '../styles/global.css'
     <link rel='icon' type='image/svg+xml' href='https://static.lihaha.cn/avatar/smiley.svg' />
     <meta name='generator' content={Astro.generator} />
     <title>{siteTitle}</title>
+    <ClientRouter />
     <script>
       var _hmt = _hmt || []
       ;(function () {
@@ -39,7 +41,7 @@ import '../styles/global.css'
           : hostname === 'liyizhuang.com'
             ? Aegis.environment.production
             : Aegis.environment.others
-      const aegis = new Aegis({
+      new Aegis({
         id: 'dWVxJTvjww9eOEq34G',
         reportApiSpeed: true,
         reportAssetSpeed: true,

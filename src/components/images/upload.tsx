@@ -22,7 +22,7 @@ const UploadImage = () => {
 
   useEffect(() => {
     cosRef.current = new COS({
-      getAuthorization: function (options, callback) {
+      getAuthorization: function (_options, callback) {
         const url = 'https://api.lihaha.cn/api/v1/auth/cos/secret/tmp'
 
         fetch(url)
@@ -77,11 +77,11 @@ const UploadImage = () => {
         onTaskReady: function (taskId) {
           console.log(taskId)
         },
-        onFileFinish: function (err, data, options) {
+        onFileFinish: function (err, _data, options) {
           console.log(options.Key + '上传' + (err ? '失败' : '完成'))
         },
       },
-      (err, data) => {
+      (err, _data) => {
         if (err) {
           console.log(err)
         } else {
