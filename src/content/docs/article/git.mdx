@@ -38,11 +38,26 @@ PreferredAuthentications publickey
 IdentityFile ~/.ssh/github.ssh
 ```
 
-## 第四部 检测
+## 第四步 检测
 
 ```shell
 # 当出现用户名的时候代表成功
 # GitHub
 ssh -T git@github.com
 
+```
+
+## 第五步 配置 git config
+
+```shell
+# 设置全局
+git config --global user.name "lihaha"
+git config --global user.email "i@lihaha.cn"
+
+# 设置单个仓库
+git config user.name "lihaha"
+git config user.email "i@lihaha.cn"
+
+# 查看配置
+git config --list
 ```
