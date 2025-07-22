@@ -1,5 +1,5 @@
 ---
-title: git同时配置github gitee多个密钥
+title: git 同时配置 github gitee 多个密钥
 ---
 
 ## 第一步 生成ssh密钥
@@ -26,16 +26,16 @@ https://github.com/settings/ssh/new
 
 # 2. 添加配置
 # gitee
-Host gitee.com
-HostName gitee.com
-PreferredAuthentications publickey
-IdentityFile ~/.ssh/gitee.ssh
+Host gitee
+		HostName gitee.com
+		PreferredAuthentications publickey
+		IdentityFile ~/.ssh/gitee.ssh
 
 # github
-Host github.com
-HostName github.com
-PreferredAuthentications publickey
-IdentityFile ~/.ssh/github.ssh
+Host github
+		HostName github.com
+		PreferredAuthentications publickey
+		IdentityFile ~/.ssh/github.ssh
 ```
 
 ## 第四步 检测
@@ -50,13 +50,38 @@ ssh -T git@github.com
 ## 第五步 配置 git config
 
 ```shell
-# 设置全局
+# 设置全局用户
 git config --global user.name "lihaha"
 git config --global user.email "i@lihaha.cn"
 
-# 设置单个仓库
-git config user.name "lihaha"
-git config user.email "i@lihaha.cn"
+# 设置单个仓库用户
+git config --local user.name "lihaha2"
+git config --local user.email "lihaha2@lihaha.cn"
+
+# 根据目录自动配置用户
+# file ~/.gitconfig
+[user]
+	name = lihaha
+	email = i@lihaha.cn
+
+[includeIf "gitdir:~/Projects/"]
+  	path = ~/.gitconfig-projects
+
+[includeIf "gitdir:/Users/{name}/Project/"]
+  	path = ~/.gitconfig-projects
+
+# file ~/.gitconfig-projects
+[user]
+  name = lihaha2
+  email = lihaha2@lihaha.cn
+
+# 其他推荐的配置
+# file ~/.gitconfig
+[push]
+	autoSetupRemote = true
+
+[log]
+	date = format:%Y-%m-%d %H:%M:%S %A
 
 # 查看配置
 git config --list
