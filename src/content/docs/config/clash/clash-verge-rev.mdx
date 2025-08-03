@@ -1,0 +1,80 @@
+---
+title: Clash Verge Rev
+pagefind: false
+---
+
+import { Tabs, TabItem } from '@astrojs/starlight/components'
+
+官网地址: https://www.clashverge.dev
+
+下载连接: https://www.clashverge.dev/install.html
+
+Github: https://github.com/clash-verge-rev/clash-verge-rev/releases
+
+### 订阅平台
+
+<Tabs>
+<TabItem label="管人痴">
+
+```markdown
+aHR0cHM6Ly94bi0tZ21xMzk2Z3J6ZC5jb20v
+```
+
+</TabItem>
+</Tabs>
+
+## 修改配置
+
+### 修改订阅配置
+
+<Tabs>
+<TabItem label="全局扩展覆写配置">
+
+```yaml
+rule-providers:
+  proxy:
+    type: http
+    path: ./lihaha-proxy.yaml
+    url: 'https://proxy.vercel.lihaha.cn/proxy/raw.githubusercontent.com/lihawhaw/clash-config-file/main/proxy.yaml'
+    interval: 600
+    proxy: DIRECT
+    behavior: classical
+    format: yaml
+    size-limit: 0
+  direct:
+    type: http
+    path: ./lihaha-direct.yaml
+    url: 'https://proxy.vercel.lihaha.cn/proxy/raw.githubusercontent.com/lihawhaw/clash-config-file/main/direct.yaml'
+    interval: 600
+    proxy: DIRECT
+    behavior: classical
+    format: yaml
+    size-limit: 0
+
+rules:
+  - DOMAIN,mon-va.byteoversea.com,DIRECT
+  - DOMAIN,rustdesk.com,🔰国外流量
+  - DOMAIN,api.rustdesk.com,🔰国外流量
+```
+
+</TabItem>
+
+<TabItem label="全局扩展脚本">
+
+```javascript
+const newRules = ['RULE-SET,proxy,🔰国外流量', 'RULE-SET,direct,🚀直接连接']
+
+function main(config, profileName) {
+  // return config;
+  let oldRules = config.rules
+
+  // 将新的规则添加到现有的规则中
+  config.rules = newRules.concat(oldRules)
+
+  // 返回修改后的配置
+  return config
+}
+```
+
+</TabItem>
+</Tabs>

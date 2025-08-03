@@ -5,12 +5,10 @@ nav:
 group:
   title: 介绍
   order: 1
-title: guide
+title: guide 介绍页
 ---
 
 <!-- # CentOS安装 -->
-
-# 介绍页
 
 ## CentOS 配置环境
 

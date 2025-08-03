@@ -1,5 +1,5 @@
 ---
-title: git 配置
+title: Git 配置
 ---
 
 ## ssh 配置

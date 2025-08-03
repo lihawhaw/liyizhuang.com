@@ -4,6 +4,7 @@ import sitemap from '@astrojs/sitemap'
 import starlight from '@astrojs/starlight'
 import tailwindcss from '@tailwindcss/vite'
 import { defineConfig } from 'astro/config'
+import { remarkEndOfMarkdown, viewTransitions } from 'astro-vtbot/starlight-view-transitions'
 import { EnumChangefreq } from 'sitemap'
 
 const lastmod = new Date().toString()
@@ -27,19 +28,38 @@ export default defineConfig({
       sidebar: [
         {
           label: '文章',
+          collapsed: true,
           autogenerate: { directory: 'article' },
         },
         {
           label: '配置',
-          autogenerate: { directory: 'config' },
+          collapsed: true,
+          // autogenerate: { directory: 'config' },
+          items: ['config', 'config/biome', 'config/eslint', 'config/prettier', 'config/zshrc', 'config/git'],
         },
         {
           label: '前端',
+          collapsed: true,
           autogenerate: { directory: 'front-end' },
         },
         {
           label: '运维',
+          collapsed: true,
           autogenerate: { directory: 'ops' },
+        },
+      ],
+      plugins: [
+        //ion()
+        viewTransitions(), // { declarativeNames: 'h2 = heading2-' }
+      ],
+      head: [
+        {
+          tag: 'link',
+          attrs: {
+            rel: 'expect',
+            href: '#below-the-fold',
+            blocking: 'render',
+          },
         },
       ],
     }),
@@ -93,5 +113,6 @@ export default defineConfig({
         dark: 'aurora-x',
       },
     },
+    remarkPlugins: [remarkEndOfMarkdown],
   },
 })

@@ -1,0 +1,167 @@
+---
+title: debian12 更换镜像源
+---
+
+import { Tabs, TabItem } from '@astrojs/starlight/components'
+
+## 备份现有镜像
+
+```shell
+mv /etc/apt/sources.list /etc/apt/sources.list.$(date +%Y%m%d%H%M%S)
+```
+
+## 官方源
+
+```shell
+// /etc/apt/sources.list
+
+cat > /etc/apt/sources.list << EOF
+deb https://deb.debian.org/debian/ bookworm main contrib non-free non-free-firmware
+deb-src https://deb.debian.org/debian/ bookworm main contrib non-free non-free-firmware
+
+deb https://deb.debian.org/debian/ bookworm-updates main contrib non-free non-free-firmware
+deb-src https://deb.debian.org/debian/ bookworm-updates main contrib non-free non-free-firmware
+
+deb https://deb.debian.org/debian/ bookworm-backports main contrib non-free non-free-firmware
+deb-src https://deb.debian.org/debian/ bookworm-backports main contrib non-free non-free-firmware
+
+deb https://deb.debian.org/debian-security/ bookworm-security main contrib non-free non-free-firmware
+deb-src https://deb.debian.org/debian-security/ bookworm-security main contrib non-free non-free-firmware
+EOF
+```
+
+## 清华源
+
+```shell
+// /etc/apt/sources.list
+
+cat > /etc/apt/sources.list << EOF
+deb https://mirrors.tuna.tsinghua.edu.cn/debian/ bookworm main contrib non-free non-free-firmware
+deb-src https://mirrors.tuna.tsinghua.edu.cn/debian/ bookworm main contrib non-free non-free-firmware
+
+deb https://mirrors.tuna.tsinghua.edu.cn/debian/ bookworm-updates main contrib non-free non-free-firmware
+deb-src https://mirrors.tuna.tsinghua.edu.cn/debian/ bookworm-updates main contrib non-free non-free-firmware
+
+deb https://mirrors.tuna.tsinghua.edu.cn/debian/ bookworm-backports main contrib non-free non-free-firmware
+deb-src https://mirrors.tuna.tsinghua.edu.cn/debian/ bookworm-backports main contrib non-free non-free-firmware
+
+deb https://mirrors.tuna.tsinghua.edu.cn/debian-security/ bookworm-security main contrib non-free non-free-firmware
+deb-src https://mirrors.tuna.tsinghua.edu.cn/debian-security/ bookworm-security main contrib non-free non-free-firmware
+EOF
+```
+
+## 中科大源
+
+```shell
+// /etc/apt/sources.list
+
+cat > /etc/apt/sources.list << EOF
+deb https://mirrors.ustc.edu.cn/debian/ bookworm main contrib non-free non-free-firmware
+deb-src https://mirrors.ustc.edu.cn/debian/ bookworm main contrib non-free non-free-firmware
+
+deb https://mirrors.ustc.edu.cn/debian/ bookworm-updates main contrib non-free non-free-firmware
+deb-src https://mirrors.ustc.edu.cn/debian/ bookworm-updates main contrib non-free non-free-firmware
+
+deb https://mirrors.ustc.edu.cn/debian/ bookworm-backports main contrib non-free non-free-firmware
+deb-src https://mirrors.ustc.edu.cn/debian/ bookworm-backports main contrib non-free non-free-firmware
+
+deb https://mirrors.ustc.edu.cn/debian-security/ bookworm-security main contrib non-free non-free-firmware
+deb-src https://mirrors.ustc.edu.cn/debian-security/ bookworm-security main contrib non-free non-free-firmware
+EOF
+```
+
+## 阿里云
+
+<Tabs>
+<TabItem label="阿里云公网源">
+
+```shell
+// /etc/apt/sources.list
+
+cat > /etc/apt/sources.list << EOF
+deb https://mirrors.aliyun.com/debian/ bookworm main contrib non-free non-free-firmware
+deb-src https://mirrors.aliyun.com/debian/ bookworm main contrib non-free non-free-firmware
+
+deb https://mirrors.aliyun.com/debian/ bookworm-updates main contrib non-free non-free-firmware
+deb-src https://mirrors.aliyun.com/debian/ bookworm-updates main contrib non-free non-free-firmware
+
+deb https://mirrors.aliyun.com/debian/ bookworm-backports main contrib non-free non-free-firmware
+deb-src https://mirrors.aliyun.com/debian/ bookworm-backports main contrib non-free non-free-firmware
+
+deb https://mirrors.aliyun.com/debian-security/ bookworm-security main contrib non-free non-free-firmware
+deb-src https://mirrors.aliyun.com/debian-security/ bookworm-security main contrib non-free non-free-firmware
+EOF
+```
+
+</TabItem>
+
+<TabItem label="阿里云内网源">
+
+```shell
+// /etc/apt/sources.list
+
+cat > /etc/apt/sources.list << EOF
+deb http://mirrors.cloud.aliyuncs.com/debian/ bookworm main contrib non-free non-free-firmware
+deb-src http://mirrors.cloud.aliyuncs.com/debian/ bookworm main contrib non-free non-free-firmware
+
+deb http://mirrors.cloud.aliyuncs.com/debian/ bookworm-updates main contrib non-free non-free-firmware
+deb-src http://mirrors.cloud.aliyuncs.com/debian/ bookworm-updates main contrib non-free non-free-firmware
+
+deb http://mirrors.cloud.aliyuncs.com/debian/ bookworm-backports main contrib non-free non-free-firmware
+deb-src http://mirrors.cloud.aliyuncs.com/debian/ bookworm-backports main contrib non-free non-free-firmware
+
+deb http://mirrors.cloud.aliyuncs.com/debian-security/ bookworm-security main contrib non-free non-free-firmware
+deb-src http://mirrors.cloud.aliyuncs.com/debian-security/ bookworm-security main contrib non-free non-free-firmware
+EOF
+```
+
+</TabItem>
+</Tabs>
+
+## 腾讯云
+
+<Tabs>
+<TabItem label="腾讯云公网源">
+
+```shell
+// /etc/apt/sources.list
+
+cat > /etc/apt/sources.list << EOF
+deb https://mirrors.cloud.tencent.com/debian/ bookworm main contrib non-free non-free-firmware
+deb-src https://mirrors.cloud.tencent.com/debian/ bookworm main contrib non-free non-free-firmware
+
+deb https://mirrors.cloud.tencent.com/debian/ bookworm-updates main contrib non-free non-free-firmware
+deb-src https://mirrors.cloud.tencent.com/debian/ bookworm-updates main contrib non-free non-free-firmware
+
+deb https://mirrors.cloud.tencent.com/debian/ bookworm-backports main contrib non-free non-free-firmware
+deb-src https://mirrors.cloud.tencent.com/debian/ bookworm-backports main contrib non-free non-free-firmware
+
+deb https://mirrors.cloud.tencent.com/debian-security/ bookworm-security main contrib non-free non-free-firmware
+deb-src https://mirrors.cloud.tencent.com/debian-security/ bookworm-security main contrib non-free non-free-firmware
+EOF
+```
+
+</TabItem>
+
+<TabItem label="腾讯云内网源">
+
+```shell
+// /etc/apt/sources.list
+
+cat > /etc/apt/sources.list << EOF
+deb http://mirrors.tencentyun.com/debian/ bookworm main contrib non-free non-free-firmware
+deb-src http://mirrors.tencentyun.com/debian/ bookworm main contrib non-free non-free-firmware
+
+deb http://mirrors.tencentyun.com/debian/ bookworm-updates main contrib non-free non-free-firmware
+deb-src http://mirrors.tencentyun.com/debian/ bookworm-updates main contrib non-free non-free-firmware
+
+deb http://mirrors.tencentyun.com/debian/ bookworm-backports main contrib non-free non-free-firmware
+deb-src http://mirrors.tencentyun.com/debian/ bookworm-backports main contrib non-free non-free-firmware
+
+deb http://mirrors.tencentyun.com/debian-security/ bookworm-security main contrib non-free non-free-firmware
+deb-src http://mirrors.tencentyun.com/debian-security/ bookworm-security main contrib non-free non-free-firmware
+EOF
+```
+
+</TabItem>
+</Tabs>

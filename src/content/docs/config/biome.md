@@ -4,9 +4,7 @@ title: Biome 配置
 
 ## React 项目
 
-```
-// biome.jsonc
-
+```json title="biome.jsonc"
 {
   "$schema": "./node_modules/@biomejs/biome/configuration_schema.json",
   "root": true,

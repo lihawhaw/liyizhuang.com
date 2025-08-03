@@ -18,7 +18,8 @@
     "astro": "^5.12.8",
     "cos-js-sdk-v5": "^1.10.1",
     "react": "^19.1.1",
-    "react-dom": "^19.1.1"
+    "react-dom": "^19.1.1",
+    "starlight-ion-theme": "^2.3.1"
   },
   "devDependencies": {
     "@astrojs/check": "^0.9.4",
@@ -29,6 +30,7 @@
     "@astrojs/sitemap": "^3.4.2",
     "@types/react": "^19.1.9",
     "@types/react-dom": "^19.1.7",
+    "astro-vtbot": "^2.1.7",
     "prettier": "^3.6.2",
     "prettier-plugin-astro": "^0.14.1",
     "prettier-plugin-tailwindcss": "^0.6.14",
