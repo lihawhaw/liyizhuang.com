@@ -1,10 +1,10 @@
-import { defineConfig } from 'astro/config'
 import mdx from '@astrojs/mdx'
-import sitemap from '@astrojs/sitemap'
-import { EnumChangefreq } from 'sitemap'
 import react from '@astrojs/react'
+import sitemap from '@astrojs/sitemap'
 import starlight from '@astrojs/starlight'
 import tailwindcss from '@tailwindcss/vite'
+import { defineConfig } from 'astro/config'
+import { EnumChangefreq } from 'sitemap'
 
 const lastmod = new Date().toString()
 
@@ -28,6 +28,10 @@ export default defineConfig({
         {
           label: '文章',
           autogenerate: { directory: 'article' },
+        },
+        {
+          label: '配置',
+          autogenerate: { directory: 'config' },
         },
         {
           label: '前端',

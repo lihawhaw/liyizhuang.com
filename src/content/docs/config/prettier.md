@@ -1,5 +1,5 @@
 ---
-title: prettier 配置
+title: Prettier 配置
 ---
 
 ## React 项目
@@ -24,6 +24,36 @@ module.exports = {
   /** 对象内两边空格 */
   bracketSpacing: true,
   /** 省略箭头函数括号 */
+  arrowParens: 'avoid',
+}
+```
+
+## astro 项目
+
+```javascript
+// prettier.config.cjs
+
+/**
+ * @type {import('prettier').Config}
+ */
+module.exports = {
+  plugins: ['prettier-plugin-astro', 'prettier-plugin-tailwindcss'],
+  overrides: [
+    {
+      files: '*.astro',
+      options: {
+        parser: 'astro',
+      },
+    },
+  ],
+  printWidth: 120,
+  tabWidth: 2,
+  singleQuote: true,
+  jsxSingleQuote: true,
+  trailingComma: 'all',
+  bracketSpacing: true,
+  semi: false,
+  useTabs: false,
   arrowParens: 'avoid',
 }
 ```
