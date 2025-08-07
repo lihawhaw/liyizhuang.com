@@ -4,7 +4,7 @@ title: Git 配置
 
 ## ssh 配置
 
-```
+```ssh-config
 // ~/.ssh/config
 
 Host github.com
@@ -29,7 +29,7 @@ Host tencent_448
 
 ### 全局配置
 
-```
+```ini
 // ~/.gitconfig
 
 [user]
@@ -50,7 +50,7 @@ Host tencent_448
 
 ### 指定目录的git配置
 
-```
+```ini
 // ~/.gitconfig-projects
 
 [user]

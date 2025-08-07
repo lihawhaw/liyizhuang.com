@@ -4,7 +4,6 @@ import sitemap from '@astrojs/sitemap'
 import starlight from '@astrojs/starlight'
 import tailwindcss from '@tailwindcss/vite'
 import { defineConfig } from 'astro/config'
-import { remarkEndOfMarkdown, viewTransitions } from 'astro-vtbot/starlight-view-transitions'
 import { EnumChangefreq } from 'sitemap'
 
 const lastmod = new Date().toString()
