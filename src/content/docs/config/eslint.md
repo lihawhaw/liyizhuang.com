@@ -2,7 +2,7 @@
 title: ESLint 配置
 ---
 
-## nextjs eslint v8
+## Next.js ESLint v8
 
 ```javascript
 // eslint.config.mjs

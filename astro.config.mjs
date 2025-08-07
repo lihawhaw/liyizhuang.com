@@ -49,8 +49,8 @@ export default defineConfig({
         },
       ],
       plugins: [
-        //ion()
-        viewTransitions(), // { declarativeNames: 'h2 = heading2-' }
+        // ion(),
+        // viewTransitions(), // { declarativeNames: 'h2 = heading2-' }
       ],
       head: [
         {
@@ -113,6 +113,5 @@ export default defineConfig({
         dark: 'aurora-x',
       },
     },
-    remarkPlugins: [remarkEndOfMarkdown],
   },
 })

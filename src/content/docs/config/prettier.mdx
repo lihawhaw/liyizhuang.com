@@ -2,7 +2,10 @@
 title: Prettier 配置
 ---
 
-## React 项目
+import { Tabs, TabItem } from '@astrojs/starlight/components'
+
+<Tabs>
+<TabItem label="React 项目">
 
 ```javascript
 // prettier.config.js
@@ -28,7 +31,9 @@ module.exports = {
 }
 ```
 
-## astro 项目
+</TabItem>
+
+<TabItem label="Astro 项目">
 
 ```javascript
 // prettier.config.cjs
@@ -57,3 +62,7 @@ module.exports = {
   arrowParens: 'avoid',
 }
 ```
+
+</TabItem>
+
+</Tabs>
