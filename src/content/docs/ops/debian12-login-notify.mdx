@@ -1,0 +1,52 @@
+---
+title: debian12 服务器登录通知
+author: 李哈哈
+description: debian12服务器登录通知
+---
+
+通知平台 [Server酱3](https://sc3.ft07.com)
+
+## 第一步：创建通知脚本
+
+```shell
+// /usr/local/bin/login-notify.sh
+#!/bin/bash
+
+# 获取登录信息
+USER="$PAM_USER"
+TTY="$PAM_TTY"
+RHOST="${PAM_RHOST:-localhost}"
+DATE=$(date +"%Y-%m-%d %H:%M:%S")
+
+# 构建JSON数据
+JSON_DATA=$(cat <<EOF
+{
+    "title": "服务器登录通知",
+    "desp": "用户: **$USER**\n\n登录时间: **$DATE**\n\n登录IP: **$RHOST** \n\nTTY **$TTY**",
+    "short": "腾讯云轻量云448登录通知",
+    "tags": "#折腾/服务器/腾讯轻量云448/登录"
+}
+EOF
+)
+
+# 发送通知并捕获响应
+RESPONSE=$(curl --silent --location --request POST 'https://<uid>.push.ft07.com/send/<sendkey>.send' \
+--header 'Content-Type: application/json' \
+--data-raw "$JSON_DATA" 2>&1)
+
+```
+
+## 第二步：添加执行权限
+
+```shell
+chmod +x /usr/local/bin/login-notify.sh
+```
+
+## 第三步：配置PAM以在登录时执行脚本
+
+```shell
+// /etc/pam.d/common-session
+
+# 添加在尾部
+session optional pam_exec.so /usr/local/bin/login-notify.sh
+```
