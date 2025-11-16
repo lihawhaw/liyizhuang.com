@@ -7,8 +7,14 @@
     "verbatimModuleSyntax": true,
     "paths": {
       "@components/*": ["src/components/*"],
-      "@layouts/*": ["src/layouts/*"]
-    }
+      "@layouts/*": ["src/layouts/*"],
+      "@/*": ["src/*"]
+    },
+    "plugins": [
+      {
+        "name": "@astrojs/ts-plugin"
+      },
+    ],
   },
   "include": [".astro/types.d.ts", "**/*"],
   "exclude": ["node_modules", "dist"]
