@@ -4,6 +4,8 @@ title: 我的配置总览
 
 ## 环境相关
 
+> [iTerm2 配置](./iterm2)
+
 > [ZSH 配置](./zshrc)
 
 > [Git 配置](./git)

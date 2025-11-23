@@ -13,8 +13,8 @@
     "plugins": [
       {
         "name": "@astrojs/ts-plugin"
-      },
-    ],
+      }
+    ]
   },
   "include": [".astro/types.d.ts", "**/*"],
   "exclude": ["node_modules", "dist"]

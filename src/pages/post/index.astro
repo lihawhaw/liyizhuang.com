@@ -1,9 +1,9 @@
 ---
-import type { MarkdownInstance } from 'astro';
-import type { Frontmatter } from '@/types/astro';
+import type { MarkdownInstance } from 'astro'
+import type { Frontmatter } from '@/types/astro'
 import Base from '../../layouts/OldBase.astro'
 import Link from '../../components/base/Link.astro'
-const posts = Object.values<MarkdownInstance<Frontmatter>>(import.meta.glob('./*.mdx', { eager: true }));
+const posts = Object.values<MarkdownInstance<Frontmatter>>(import.meta.glob('./*.mdx', { eager: true }))
 ---
 
 <Base>

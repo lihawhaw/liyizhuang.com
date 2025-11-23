@@ -34,7 +34,15 @@ export default defineConfig({
           label: '配置',
           collapsed: true,
           // autogenerate: { directory: 'config' },
-          items: ['config', 'config/biome', 'config/eslint', 'config/prettier', 'config/zshrc', 'config/git'],
+          items: [
+            'config',
+            'config/biome',
+            'config/eslint',
+            'config/prettier',
+            'config/zshrc',
+            'config/git',
+            'config/iterm2',
+          ],
         },
         {
           label: '前端',
