@@ -51,10 +51,31 @@ rule-providers:
     format: yaml
     size-limit: 0
 
+dns:
+  fake-ip-filter:
+    - '+.lihaha.cn'
+    - '+.xiaojukeji.com'
+    - '+.didichuxing.com'
+    - '+.didiglobal.com'
+    - '+.didi.cn'
+  nameserver-policy:
+    '+.didichuxing.com':
+      - '172.23.128.1'
+    '+.didiglobal.com':
+      - '172.23.128.1'
+    '+.xiaojukeji.com':
+      - '172.23.128.1'
+    '+.didi.cn':
+      - '172.23.128.1'
+
 rules:
   - DOMAIN,mon-va.byteoversea.com,DIRECT
   - DOMAIN,rustdesk.com,🔰国外流量
   - DOMAIN,api.rustdesk.com,🔰国外流量
+  - DOMAIN-SUFFIX,lihaha.cn,DIRECT
+  - DOMAIN-SUFFIX,xiaojukeji.com,DIRECT
+  - DOMAIN-SUFFIX,didichuxing.com,DIRECT
+  - DOMAIN-SUFFIX,didi.cn,DIRECT
 ```
 
 </TabItem>
