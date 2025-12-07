@@ -5,7 +5,7 @@ nav:
 group:
   title: 服务器配置
   order: 2
-title: Debian 12 Install nginx http3
+title: Debian12 Install nginx http3
 ---
 
 ## 第一步 安装依赖
