@@ -6,40 +6,24 @@ title: Biome 配置
 
 ```json title="biome.jsonc"
 {
-  "$schema": "./node_modules/@biomejs/biome/configuration_schema.json",
+  "$schema": "https://biomejs.dev/schemas/2.3.6/schema.json",
   "root": true,
-  "assist": { "enabled": true, "actions": { "source": { "organizeImports": "on" } } },
+  "assist": {
+    "enabled": true,
+    "actions": {
+      "source": {
+        "organizeImports": "on"
+      }
+    }
+  },
   "vcs": {
     "enabled": true,
     "clientKind": "git",
     "useIgnoreFile": true
   },
-  "formatter": {
-    "enabled": true,
-    "indentStyle": "space",
-    "indentWidth": 2,
-    "lineWidth": 140,
-    "attributePosition": "auto",
-    "formatWithErrors": false
+  "files": {
+    "includes": ["**", "!**/generated", "!!**/dist"]
   },
-  "javascript": {
-    "formatter": {
-      "quoteStyle": "single",
-      "semicolons": "asNeeded",
-      "trailingCommas": "all",
-      "attributePosition": "auto",
-      "jsxQuoteStyle": "single",
-      "arrowParentheses": "asNeeded",
-      "bracketSpacing": true,
-      "bracketSameLine": false
-    }
-  },
-  "css": {
-    "parser": {
-      "cssModules": true
-    }
-  },
-  "json": { "parser": { "allowComments": true }, "linter": { "enabled": true } },
   "linter": {
     "enabled": true,
     "rules": {
@@ -55,9 +39,17 @@ title: Biome 配置
           "options": {
             "strictCase": true,
             "conventions": [
-              { "selector": { "kind": "enum" }, "match": "I?[A-Z][a-z]+(?:[A-Z][a-z]*)*", "formats": ["PascalCase"] },
               {
-                "selector": { "kind": "enumMember" },
+                "selector": {
+                  "kind": "enum"
+                },
+                "match": "I?[A-Z][a-z]+(?:[A-Z][a-z]*)*",
+                "formats": ["PascalCase"]
+              },
+              {
+                "selector": {
+                  "kind": "enumMember"
+                },
                 "match": "[A-Z][a-z]+(?:[A-Z][a-z]*)*",
                 "formats": ["PascalCase"]
               }
@@ -68,8 +60,86 @@ title: Biome 配置
       }
     },
     "domains": {
-      "react": "all"
+      "react": "recommended"
     }
-  }
+  },
+  "formatter": {
+    "enabled": true,
+    "indentStyle": "space",
+    "indentWidth": 2,
+    "lineWidth": 140,
+    "attributePosition": "auto",
+    "formatWithErrors": false,
+    "lineEnding": "auto",
+    "bracketSpacing": true,
+    "expand": "never"
+  },
+  "html": {
+    "experimentalFullSupportEnabled": true,
+    "formatter": {
+      "enabled": true,
+      "indentScriptAndStyle": true
+    }
+  },
+  "css": {
+    "parser": {
+      "cssModules": true,
+      "tailwindDirectives": true
+    },
+    "linter": {
+      "enabled": true
+    },
+    "formatter": {
+      "enabled": true,
+      "indentWidth": 2,
+      "quoteStyle": "single",
+      "lineWidth": 140
+    }
+  },
+  "javascript": {
+    "assist": {
+      "enabled": true
+    },
+    "formatter": {
+      "enabled": true,
+      "quoteStyle": "single",
+      "jsxQuoteStyle": "single",
+      "semicolons": "asNeeded",
+      "trailingCommas": "all",
+      "attributePosition": "auto",
+      "arrowParentheses": "asNeeded",
+      "bracketSpacing": true,
+      "bracketSameLine": false,
+      "indentStyle": "space",
+      "expand": "never",
+      "quoteProperties": "asNeeded"
+    }
+  },
+  "json": {
+    "parser": {
+      "allowComments": false
+    },
+    "linter": {
+      "enabled": true
+    },
+    "formatter": {
+      "enabled": true,
+      "expand": "auto",
+      "indentStyle": "space",
+      "indentWidth": 2,
+      "lineWidth": 140,
+      "trailingCommas": "none"
+    }
+  },
+  "overrides": [
+    {
+      "includes": ["**/*.jsonc", "biome.jsonc", ".vscode/**", "tsconfig.json"],
+      "json": {
+        "parser": {
+          "allowComments": true
+        }
+      }
+    }
+  ]
 }
 ```

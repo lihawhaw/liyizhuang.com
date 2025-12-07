@@ -31,6 +31,66 @@ aHR0cHM6Ly94bi0tZ21xMzk2Z3J6ZC5jb20v
 <TabItem label="全局扩展覆写配置">
 
 ```yaml
+# Profile Enhancement Merge Template for Clash Verge
+
+profile:
+  store-selected: true
+
+    # 'ezvpn.didichuxing.com':
+    #   - '223.6.6.6'
+    #   # - '1.1.1.1'
+    # 'ezvpn6.didichuxing.com':
+    #   - '223.6.6.6'
+    #   # - '1.1.1.1'
+    
+dns:
+  # enable: true                 # 开启 DNS 模块
+  # listen: 0.0.0.0:53           # 监听本地 53 端口
+  
+  # 推荐使用 Fake IP 模式，有助于提高分流匹配效率和性能
+  # enhanced-mode: fake-ip 
+  # fake-ip-range: 198.18.0.1/16 # 伪造 IP 地址范围
+
+  # 主要 DNS 解析器（通常配置为国内快速解析器）
+  # nameserver:
+  #   - 223.5.5.5               # 阿里云公共 DNS
+  #   - 119.29.29.29            # 腾讯云公共 DNS
+
+  # 备用解析器（处理被污染的域名，通常走代理加密 DNS）
+  # fallback:
+  #   - https://8.8.8.8/dns-query  # Google DoH (走代理)
+  #   - tls://1.0.0.1              # Cloudflare DoT (走代理)
+  
+  # 域名规则分流（关键步骤）
+  # 规则放在 dns.rules 中，而不是顶级 rules
+  # rules:
+  #   # 强制将所有中国大陆域名通过主要解析器解析
+  #   - 'GEOSITE,CN,nameserver' 
+  #   # 其他未匹配的域名通过 fallback 解析器解析
+  #   - 'MATCH,fallback'
+
+#   fake-ip-filter:
+#     - '+.lihaha.cn'
+#     - '+.xiaojukeji.com'
+#     - '+.didichuxing.com'
+#     - '+.didiglobal.com'
+#     - '+.didi.cn'
+#     - '+.didipay.com'
+#   nameserver-policy:
+#     '+.didichuxing.com':
+#       - '172.23.128.1'
+#       - '172.23.128.2'
+#     '+.didiglobal.com':
+#       - '172.23.128.1'
+#       - '172.23.128.2'
+#     '+.xiaojukeji.com':
+#       - '172.23.128.1'
+#       - '172.23.128.2'
+#     '+.didi.cn':
+#       - '172.23.128.1'
+#     '+.didipay.com':
+#       - '172.23.128.1'
+
 rule-providers:
   proxy:
     type: http
@@ -50,32 +110,125 @@ rule-providers:
     behavior: classical
     format: yaml
     size-limit: 0
-
-dns:
-  fake-ip-filter:
-    - '+.lihaha.cn'
-    - '+.xiaojukeji.com'
-    - '+.didichuxing.com'
-    - '+.didiglobal.com'
-    - '+.didi.cn'
-  nameserver-policy:
-    '+.didichuxing.com':
-      - '172.23.128.1'
-    '+.didiglobal.com':
-      - '172.23.128.1'
-    '+.xiaojukeji.com':
-      - '172.23.128.1'
-    '+.didi.cn':
-      - '172.23.128.1'
+  google:
+    type: http
+    behavior: domain
+    url: "https://cdn.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/google.txt"
+    path: ./ruleset/google.yaml
+    interval: 86400
+  proxy2:
+    type: http
+    behavior: domain
+    url: "https://cdn.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/proxy.txt"
+    path: ./ruleset/proxy.yaml
+    interval: 86400
+  direct2:
+    type: http
+    behavior: domain
+    url: "https://cdn.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/direct.txt"
+    path: ./ruleset/direct.yaml
+    interval: 86400
+  private:
+    type: http
+    behavior: domain
+    url: "https://cdn.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/private.txt"
+    path: ./ruleset/private.yaml
+    interval: 86400
+  gfw:
+    type: http
+    behavior: domain
+    url: "https://cdn.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/gfw.txt"
+    path: ./ruleset/gfw.yaml
+    interval: 86400
+  cncidr:
+    type: http
+    behavior: ipcidr
+    url: "https://cdn.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/cncidr.txt"
+    path: ./ruleset/cncidr.yaml
+    interval: 86400
 
 rules:
-  - DOMAIN,mon-va.byteoversea.com,DIRECT
+  - RULE-SET,google,🔰国外流量
+  - RULE-SET,proxy2,🔰国外流量
+  - RULE-SET,gfw,🔰国外流量
+  - RULE-SET,direct2,DIRECT
+  - RULE-SET,private,DIRECT
+  - RULE-SET,cncidr,DIRECT
   - DOMAIN,rustdesk.com,🔰国外流量
   - DOMAIN,api.rustdesk.com,🔰国外流量
+  - DOMAIN,www.palantir.com,🔰国外流量
+  - DOMAIN-SUFFIX,palantir.com,🔰国外流量
+  - DOMAIN,cursor.sh,🔰国外流量
+  - DOMAIN-SUFFIX,cursor.sh,🔰国外流量
+  - DOMAIN-SUFFIX,npmtrends.com,🔰国外流量
+  - DOMAIN,npm-trends-proxy.uidotdev.workers.dev,🔰国外流量
+  # - DOMAIN,developer.mozilla.org,🔰国外流量
+  # - DOMAIN-SUFFIX,mozilla.org,🔰国外流量
+  - DOMAIN-SUFFIX,mdnplay.dev,🔰国外流量
+  - DOMAIN,api.individual.githubcopilot.com,🔰国外流量
+  - DOMAIN-SUFFIX,githubcopilot.com,🔰国外流量
+  - DOMAIN,ts-morph.com,🔰国外流量
+  - DOMAIN-SUFFIX,ts-morph.com,🔰国外流量
+  - DOMAIN,maxcdn.bootstrapcdn.com,🔰国外流量
+  - DOMAIN-SUFFIX,bootstrapcdn.com,🔰国外流量
+  - DOMAIN-SUFFIX,code.jquery.com,🔰国外流量
+  - DOMAIN,jquery.com,🔰国外流量
+  - DOMAIN,signin.aws.amazon.com,🔰国外流量
+  - DOMAIN,console.aws.amazon.com,🔰国外流量
+  - DOMAIN-SUFFIX,console.aws.amazon.com,🔰国外流量
+  - DOMAIN-SUFFIX,aws.amazon.com,🔰国外流量
+  - DOMAIN-SUFFIX,console.awsstatic.com,🔰国外流量
+  - DOMAIN,support.typora.io,🔰国外流量
+  - DOMAIN-SUFFIX,typora.io,🔰国外流量
+    # Twitter/X 主要域名列表
+  - DOMAIN,x.com,🔰国外流量
+  - DOMAIN-SUFFIX,x.com,🔰国外流量
+  - DOMAIN,twitter.com,🔰国外流量
+  - DOMAIN-SUFFIX,twitter.com,🔰国外流量
+  - DOMAIN,t.co,🔰国外流量
+  - DOMAIN-SUFFIX,t.co,🔰国外流量
+  - DOMAIN,twimg.com,🔰国外流量
+  - DOMAIN-SUFFIX,twimg.com,🔰国外流量
+  - DOMAIN,pscp.tv,🔰国外流量
+  - DOMAIN-SUFFIX,pscp.tv,🔰国外流量
+  - DOMAIN,periscope.tv,🔰国外流量
+  - DOMAIN-SUFFIX,periscope.tv,🔰国外流量
+  - DOMAIN,tweetdeck.com,🔰国外流量
+  - DOMAIN-SUFFIX,tweetdeck.com,🔰国外流量
+  - DOMAIN,ads-twitter.com,🔰国外流量
+  - DOMAIN-SUFFIX,ads-twitter.com,🔰国外流量
+  - DOMAIN,twitterinc.com,🔰国外流量
+  - DOMAIN-SUFFIX,twitterinc.com,🔰国外流量
+  - DOMAIN,twtrdns.net,🔰国外流量
+  - DOMAIN-SUFFIX,twtrdns.net,🔰国外流量
+  - DOMAIN,twitterstat.us,🔰国外流量
+  - DOMAIN-SUFFIX,twitterstat.us,🔰国外流量
+  - DOMAIN,starchart.cc,🔰国外流量
+  - DOMAIN,www.clashverge.dev,🔰国外流量
+  - DOMAIN,code.claude.com,🔰国外流量
+  - DOMAIN,claude.com,🔰国外流量
+  - DOMAIN-SUFFIX,claude.com,🔰国外流量
+  - DOMAIN,mintcdn.com,🔰国外流量
+  - DOMAIN-SUFFIX,mintcdn.com,🔰国外流量
+  - DOMAIN,mon-va.byteoversea.com,DIRECT
+  - DOMAIN,proxy.vercel.lihaha.cn,DIRECT
   - DOMAIN-SUFFIX,lihaha.cn,DIRECT
   - DOMAIN-SUFFIX,xiaojukeji.com,DIRECT
   - DOMAIN-SUFFIX,didichuxing.com,DIRECT
   - DOMAIN-SUFFIX,didi.cn,DIRECT
+  - DOMAIN-SUFFIX,didipay.com,DIRECT
+  - DOMAIN,cdn.apifox.com,DIRECT
+  - DOMAIN-SUFFIX,apifox.com,DIRECT
+  - DOMAIN,www.yuque.com,DIRECT
+  - DOMAIN-SUFFIX,yuque.com,DIRECT
+  - DOMAIN,gw.alipayobjects.com,DIRECT
+  - DOMAIN-SUFFIX,alipayobjects.com,DIRECT
+  - DOMAIN,office-cn-hangzhou.imm.aliyuncs.com,DIRECT
+  - DOMAIN-SUFFIX,aliyuncs.com,DIRECT
+  - DOMAIN,static.deepseek.com,DIRECT
+  - DOMAIN,chat.deepseek.com,DIRECT
+  - DOMAIN-SUFFIX,deepseek.com,DIRECT
+
 ```
 
 </TabItem>

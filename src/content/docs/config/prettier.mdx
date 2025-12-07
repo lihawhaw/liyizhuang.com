@@ -10,25 +10,35 @@ import { Tabs, TabItem } from '@astrojs/starlight/components'
 ```javascript
 // prettier.config.js
 
-/** @type {import("prettier").Config} */
-module.exports = {
-  /** 缩进 */
-  tabWidth: 2,
-  /** 使用制表符 */
-  useTabs: false,
-  /** 不使用分号 */
-  semi: false,
+import type { Config } from 'prettier'
+
+const config: Config = {
   /** 使用单引号 */
   singleQuote: true,
-  /** 在JSX中使用单引号 */
+  /** JSX 中使用单引号 */
   jsxSingleQuote: true,
-  /** 使用尾随逗号 */
+  /** 对象属性的引号按需使用，仅在必要时加引号 */
+  quoteProps: 'as-needed',
+  /** 语句末尾不加分号 */
+  semi: false,
+  /** 添加尾随逗号 */
   trailingComma: 'all',
-  /** 对象内两边空格 */
-  bracketSpacing: true,
-  /** 省略箭头函数括号 */
+  /** 箭头函数参数只有一个时省略括号 */
   arrowParens: 'avoid',
+  /** 对象、数组、导入等大括号内保留空格 `{ a: 1 }` */
+  bracketSpacing: true,
+  /** JSX 标签的 `>` 是否另起一行，false 表示换行 */
+  bracketSameLine: false,
+  /** 缩进为 2 个空格，常用风格 */
+  tabWidth: 2,
+  /** 单行最大长度 140 */
+  printWidth: 140,
+  /** 保持原有的换行风格，不强制 LF 或 CRLF */
+  endOfLine: 'auto',
 }
+
+export default config
+
 ```
 
 </TabItem>
