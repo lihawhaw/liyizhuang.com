@@ -42,6 +42,7 @@ export default defineConfig({
             'config/zshrc',
             'config/git',
             'config/iterm2',
+            'config/hammerspoon',
           ],
         },
         {
