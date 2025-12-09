@@ -43,6 +43,7 @@ export default defineConfig({
             'config/git',
             'config/iterm2',
             'config/hammerspoon',
+            'config/typora',
           ],
         },
         {
