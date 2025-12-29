@@ -47,10 +47,12 @@ alias brs="bun run start"
 alias brd="bun run dev"
 alias ws="webstorm"
 alias yarniv="yarn install --verbose"
-# alias upall="brew update && brew upgrade && brew cu -a -y && brew cleanup && mas upgrade && ~/plum/rime-install iDvel/rime-ice:others/recipes/full"
-# alias upall2="brew update && brew upgrade && brew upgrade --cask --greedy && brew cleanup && mas upgrade && ~/plum/rime-install iDvel/rime-ice:others/recipes/full"
+alias upall="brew update && brew upgrade && brew cu -a -y && brew cleanup && mas upgrade"
+alias upall2="brew update && brew upgrade && brew upgrade --cask --greedy && brew cleanup && mas upgrade"
 alias c="cursor"
 alias py="python3"
+alias gstl='git stash list --pretty=format:"%C(yellow)%h%Creset %C(cyan)%ad%Creset %C(magenta)%gs%Creset %C(green)%s%Creset" --date=format:"%Y-%m-%d %H:%M"'
+alias claude='claude --allow-dangerously-skip-permissions'
 # alias End
 
 plugins=(
