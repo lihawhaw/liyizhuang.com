@@ -47,12 +47,17 @@ alias brs="bun run start"
 alias brd="bun run dev"
 alias ws="webstorm"
 alias yarniv="yarn install --verbose"
-alias upall="brew update && brew upgrade && brew cu -a -y && brew cleanup && mas upgrade"
-alias upall2="brew update && brew upgrade && brew upgrade --cask --greedy && brew cleanup && mas upgrade"
+alias upall="brew update && brew upgrade && brew cu -a -y && brew cleanup --prune=all && mas upgrade && update-all-marketplaces"
+alias upall2="brew update && brew upgrade && brew upgrade --cask --greedy && brew cleanup --prune=all && mas upgrade"
 alias c="cursor"
 alias py="python3"
 alias gstl='git stash list --pretty=format:"%C(yellow)%h%Creset %C(cyan)%ad%Creset %C(magenta)%gs%Creset %C(green)%s%Creset" --date=format:"%Y-%m-%d %H:%M"'
 alias claude='claude --allow-dangerously-skip-permissions'
+alias update-all-marketplaces='claude plugin marketplace list | grep -E "^\s+❯" | awk "{print \$2}" | xargs -I {} claude plugin marketplace update {}'
+alias iterm="open -a iTerm"
+alias iterm2="open -a iTerm"
+alias iTerm="open -a iTerm"
+alias iTerm2="open -a iTerm"
 # alias End
 
 plugins=(
@@ -95,6 +100,25 @@ function update_mas() {
 function upall() {
   update_brew
   update_mas
+}
+
+# 恢复开发文件默认打开程序
+function reset_file_default_app() {
+  echo "正在恢复开发文件默认打开程序..."
+  duti -s com.microsoft.VSCodeInsiders .ts all
+  duti -s com.microsoft.VSCodeInsiders .tsx all
+  duti -s com.microsoft.VSCodeInsiders .js all
+  duti -s com.microsoft.VSCodeInsiders .jsx all
+  duti -s com.microsoft.VSCodeInsiders .json all
+  duti -s com.microsoft.VSCodeInsiders .css all
+  duti -s com.microsoft.VSCodeInsiders .scss all
+  duti -s com.microsoft.VSCodeInsiders .xml all
+  duti -s com.microsoft.VSCodeInsiders .vue all
+  duti -s com.microsoft.VSCodeInsiders .md all
+  duti -s com.microsoft.VSCodeInsiders .yaml all
+  duti -s com.microsoft.VSCodeInsiders .lock all
+  duti -s com.microsoft.VSCodeInsiders .webmanifest all
+  echo "开发文件默认打开程序恢复完成！"
 }
 
 ```
